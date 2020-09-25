@@ -16,10 +16,12 @@ Route::get('/', function () {
 });
 Route::group(['middleware' => 'auth'], function() {
   Route::get('nine', 'NineController@index');
+  Route::get('nine/show', 'NineController@show');
   Route::get('nine/create', 'NineController@add');
   Route::post('nine/create', 'NineController@create');
   Route::get('nine/edit', 'NineController@edit');
   Route::post('nine/edit', 'NineController@update');
+  Route::get('nine/delete', 'NineController@delete');
 });
 
 Auth::routes();

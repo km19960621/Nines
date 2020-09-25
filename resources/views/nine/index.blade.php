@@ -6,7 +6,7 @@
     @foreach($nine as $n)
     <div class="nine-frame">
       <div class="nine">
-        <div class="title">{{ $n->title }}</div>
+        <div class="title"><a href="{{ action('NineController@show', ['id' => $n->id]) }}">{{$n->title}}</a></div>
           <div class="nine-content">
             <img class="ground" src="{{ asset('image/nines.png') }}">
             <div class="text pitcher">{{ $n->pitcher }}</div>

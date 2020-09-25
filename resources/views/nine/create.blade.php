@@ -25,12 +25,14 @@
             <?php $position_jp = ['投手', '捕手', '一塁手', '二塁手', '三塁手', '遊撃手', '左翼手', '中堅手 ', '右翼手', '指名打者'] ?>
             <?php $position_en = ['pitcher', 'catcher', 'first_baseman', 'second_baseman', 'third_baseman', 'shortstop', 'left_fielder', 'center_fielder', 'right_fielder', 'designated_hitter'] ?>
             @for($i = 1; $i <= 10; $i++)
+              <?php $p_jp = $position_jp[$i - 1]; ?>
+              <?php $p_en = $position_en[$i - 1]; ?>
               <tr>
                 <td>
-                  {{ $position_jp[$i - 1] }}
+                  {{ $p_jp }}
                 </td>
                 <td>
-                  <input type="text" name="{{ $position_en[$i - 1] }}">
+                  <input type="text" name="{{ $p_en }}">
                 </td>
               </tr>
             @endfor

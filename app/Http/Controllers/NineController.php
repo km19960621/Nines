@@ -11,7 +11,7 @@ class NineController extends Controller
     public function index(Request $request)
     {
       $nines = Nine::all()->reverse();
-      return view('nine.index', ['nine' => $nines,]);
+      return view('nine.index', ['nine' => $nines]);
     }
 
     public function add()
@@ -32,13 +32,37 @@ class NineController extends Controller
       return redirect('nine');
     }
 
-    public function edit()
+    public function show(Request $request)
     {
-      return view('nine.edit');
+      $nine = Nine::find($request->id);
+      if (empty($nine)) {
+        abort(404);
+      }
+      return view('nine.show', ['nine' => $nine]);
     }
 
-    public function update()
+    public function edit(Request $request)
     {
+      $nine = Nine::find($request->id);
+      if (empty($nine)) {
+        abort(404);
+      }
+      return view('nine.edit', ['nine_form' => $nine]);
+    }
+
+    public function update(Request $request)
+    {
+      $this->validate($request, Nine::$rules);
+      $nine = Nine::find($request->id);
+      $nine_form = $request->all();
+      $nine->fill($nine_form)->save();
+      return redirect('nine');
+    }
+
+    public function delete(Request $request)
+    {
+      $nine = Nine::find($request->id);
+      $nine->delete();
       return redirect('nine');
     }
 }

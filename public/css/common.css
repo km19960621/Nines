@@ -47,6 +47,7 @@ body {
   width: 400px;
   margin: auto;
   margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   background: linear-gradient(to bottom, darkgreen, mediumseagreen, darkgreen);
 }
@@ -58,8 +59,14 @@ body {
 .title {
   text-align: center;
   font-size: 15px;
-  background-color: lightgray;
+  background: linear-gradient(to left, gray, black, gray);
   padding: 5px;
+  color: white;
+}
+
+.title a:link,
+.title a:visited {
+  color: white;
 }
 
 .nine-content {
@@ -73,11 +80,11 @@ body {
 
 .text {
   position: absolute;
-  display: block;
   font-size: 20px;
   color: white;
   text-shadow: black 2px 2px 5px, black -2px 2px 5px, black 2px -2px 5px, black -2px -2px 1px;
   transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 .pitcher {
@@ -92,7 +99,7 @@ body {
 
 .first_baseman {
   left: 82.5%;
-  top: 50%;
+  top: 52.5%;
 }
 
 .second_baseman {
@@ -102,7 +109,7 @@ body {
 
 .third_baseman {
   left: 17.5%;
-  top: 50%;
+  top: 52.5%;
 }
 
 .shortstop {
@@ -128,5 +135,9 @@ body {
 .designated_hitter {
   left: 85%;
   top: 82.5%;
+}
+
+.center {
+  text-align: center;
 }
 
