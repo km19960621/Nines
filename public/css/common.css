@@ -141,3 +141,29 @@ body {
   text-align: center;
 }
 
+.order {
+  margin: 15px;
+}
+
+table {
+  height: 400px;
+  min-width: 200px;
+  margin: auto;
+  padding: 1px 5px;
+  border-collapse: separate;
+  border-spacing: 1px 3px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+figcaption {
+  text-align: center;
+}
+
+table th,
+td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: normal;
+}
+

@@ -22,6 +22,11 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('nine/edit', 'NineController@edit');
   Route::post('nine/edit', 'NineController@update');
   Route::get('nine/delete', 'NineController@delete');
+  Route::get('order/create', 'OrderController@add');
+  Route::post('order/create', 'OrderController@create');
+  Route::get('order/edit', 'OrderController@edit');
+  Route::post('order/edit', 'OrderController@update');
+  Route::get('order/delete', 'OrderController@delete');
 });
 
 Auth::routes();

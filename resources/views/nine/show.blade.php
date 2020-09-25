@@ -1,8 +1,8 @@
 @extends('layout')
 @section('title', 'ナイン')
 
-<div class="nine-wrapper">
-  @section('content')
+@section('content')
+  <div class="nine-wrapper">
     <div class="nine-frame">
       <div class="nine">
         <div class="title">{{$nine->title}}</div>
@@ -21,9 +21,41 @@
           </div>
         </div>
     </div>
-    <div class="center">
-      <a class="btn btn-primary" href="{{ action('NineController@edit', ['id' => $nine->id]) }}">編集</a>
-      <a class="btn btn-danger" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+  </div>
+  <div class="center">
+    <a class="btn btn-primary" href="{{ action('OrderController@add', ['id' => $nine->id]) }}">オーダー作成</a>
+    <a class="btn btn-primary" href="{{ action('NineController@edit', ['id' => $nine->id]) }}">編集</a>
+    <a class="btn btn-danger" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+  </div>
+  @foreach($orders as $order)
+    <div class="order">
+      <table border="1">
+        {{ $order->title }}
+        <tr>
+          <th>打順</th>
+          <th>ポジション</th>
+          <th>選手名</th>
+        </tr>
+        <?php $batting_order = ['first_batter', 'second_batter', 'third_batter', 'fourth_batter', 'fifth_batter', 'sixth_batter', 'seventh_batter', 'eighth_batter', 'ninth_batter'] ?>
+        <?php $position_en = ['pitcher', 'catcher', 'first_baseman', 'second_baseman', 'third_baseman', 'shortstop', 'left_fielder', 'center_fielder', 'right_fielder', 'designated_hitter'] ?>
+        <?php $position_translate = ['pitcher' => '投手', 'catcher' => '捕手', 'first_baseman' => '一塁手', 'second_baseman' => '二塁手', 'third_baseman' => '三塁手', 'shortstop' => '遊撃手', 'left_fielder' => '左翼手', 'center_fielder' => '中堅手', 'right_fielder' => '右翼手', 'designated_hitter' => 'DH'] ?>
+        @for($i = 1; $i <= 9; $i++)
+          <?php $b = $batting_order[$i - 1]; ?>
+          <?php $p_en = $position_en[$i - 1]; ?>
+          <tr>
+            <td>
+              {{ $i }}
+            </td>
+            <td>
+              {{ $position_translate[$order->$b] }}
+            </td>
+            <td>
+              <?php $position =  $order->$b ?>
+              {{ $nine->$position }}
+            </td>
+          </tr>
+        @endfor
+      </table>
     </div>
-  @endsection
-</div>
+  @endforeach
+@endsection

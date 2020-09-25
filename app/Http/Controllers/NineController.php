@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Nine;
+use App\Order;
 
 class NineController extends Controller
 {
@@ -21,7 +23,7 @@ class NineController extends Controller
 
     public function create(Request $request)
     {
-      //$this->validate($request, Nine::$rules);
+      $this->validate($request, Nine::$rules);
 
       $nine = new Nine;
       $form = $request->all();
@@ -35,10 +37,11 @@ class NineController extends Controller
     public function show(Request $request)
     {
       $nine = Nine::find($request->id);
+      $orders = DB::table('orders')->where('nine_id', $nine->id)->get();
       if (empty($nine)) {
         abort(404);
       }
-      return view('nine.show', ['nine' => $nine]);
+      return view('nine.show', ['nine' => $nine, 'orders' => $orders]);
     }
 
     public function edit(Request $request)
