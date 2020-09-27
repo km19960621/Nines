@@ -24,13 +24,19 @@
   </div>
   <div class="center">
     <a class="btn btn-primary" href="{{ action('OrderController@add', ['id' => $nine->id]) }}">オーダー作成</a>
-    <a class="btn btn-primary" href="{{ action('NineController@edit', ['id' => $nine->id]) }}">編集</a>
-    <a class="btn btn-danger" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+    <a class="btn btn-secondary" href="{{ action('NineController@edit', ['id' => $nine->id]) }}">編集</a>
+    @if($orders)
+      <a class="btn btn-danger disabled" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+    @else
+      <a class="btn btn-danger" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+    @endif
   </div>
   @foreach($orders as $order)
     <div class="order">
       <table border="1">
-        {{ $order->title }}
+        <div class="center">
+          {{ $order->title }}
+        </div>
         <tr>
           <th>打順</th>
           <th>ポジション</th>
@@ -56,6 +62,10 @@
           </tr>
         @endfor
       </table>
+    </div>
+    <div class="center">
+      <a class="btn btn-outline-secondary btn-sm" href="{{ action('OrderController@edit', ['id' => $order->id]) }}">編集</a>
+      <a class="btn btn-outline-danger btn-sm" href="{{ action('OrderController@delete', ['id' => $order->id]) }}">削除</a>
     </div>
   @endforeach
 @endsection

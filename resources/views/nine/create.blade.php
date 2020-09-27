@@ -38,7 +38,9 @@
             @endfor
           </table>
           {{ csrf_field() }}
-          <input type="submit" class="btn btn-primary" value="決定">
+          <div class="center">
+            <input type="submit" class="btn btn-primary" value="決定">
+          </div>
         </form>
       </div>
     </div>

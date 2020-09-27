@@ -12,18 +12,6 @@ class OrderController extends Controller
     public function add(Request $request)
     {
       $nine = Nine::find($request->id);
-      /*
-      $pitcher = $nine->pitcher;
-      $catcher = $nine->catcher;
-      $first_baseman = $nine->first_baseman;
-      $second_baseman = $nine->second_baseman;
-      $third_baseman = $nine->third_baseman;
-      $shortstop = $nine->shortstop;
-      $left_fielder = $nine->left_fielder;
-      $center_fielder = $nine->center_fielder;
-      $right_fielder = $nine->right_fielder;
-      $designated_hitter = $nine->designated_hitter;
-      */
       return view('order.create', ['nine' => $nine]);
     }
 
@@ -42,16 +30,27 @@ class OrderController extends Controller
 
     public function edit(Request $request)
     {
-
+      $order = Order::find($request->id);
+      $nine = Nine::find($order->nine_id);
+      if (empty($order)) {
+        abort(404);
+      }
+      return view('order.edit', ['nine' => $nine, 'order_form' => $order]);
     }
 
     public function update(Request $request)
     {
-
+      $this->validate($request, Order::$rules);
+      $order = Order::find($request->id);
+      $order_form = $request->all();
+      $order->fill($order_form)->save();
+      return redirect('nine');
     }
 
     public function delete(Request $request)
     {
-
+      $order = Order::find($request->id);
+      $order->delete();
+      return redirect('nine');
     }
 }

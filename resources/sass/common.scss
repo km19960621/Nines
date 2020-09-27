@@ -134,6 +134,8 @@ table {
   height: 400px;
   min-width: 200px;
   margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 1px 5px;
   border-collapse: separate;
   border-spacing: 1px 3px;
@@ -142,9 +144,4 @@ table {
 }
 figcaption {
   text-align: center;
-}
-table th, td {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-weight: normal;
 }
