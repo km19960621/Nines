@@ -15,6 +15,7 @@
               @endforeach
             </ul>
           @endif
+          <input type="hidden" name="user_id" value="{{ $user_id }}">
           <table border="1">
             <figcaption>
               <input type="text" name="title" value="{{ $nine_form->title }}">

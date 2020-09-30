@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['middleware' => 'auth'], function() {
-  Route::get('nine', 'NineController@index');
+  Route::get('/', 'NineController@index');
   Route::get('nine/show', 'NineController@show');
   Route::get('nine/create', 'NineController@add');
   Route::post('nine/create', 'NineController@create');

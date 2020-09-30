@@ -22,15 +22,17 @@
         </div>
     </div>
   </div>
-  <div class="center">
-    <a class="btn btn-primary" href="{{ action('OrderController@add', ['id' => $nine->id]) }}">オーダー作成</a>
-    <a class="btn btn-secondary" href="{{ action('NineController@edit', ['id' => $nine->id]) }}">編集</a>
-    @if($orders)
-      <a class="btn btn-danger disabled" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
-    @else
-      <a class="btn btn-danger" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
-    @endif
-  </div>
+  @if ($user_id == $nine->user_id)
+    <div class="center">
+      <a class="btn btn-primary" href="{{ action('OrderController@add', ['id' => $nine->id]) }}">オーダー作成</a>
+      <a class="btn btn-secondary" href="{{ action('NineController@edit', ['id' => $nine->id]) }}">編集</a>
+      @if($orders)
+        <a class="btn btn-danger disabled" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+      @else
+        <a class="btn btn-danger" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+      @endif
+    </div>
+  @endif
   @foreach($orders as $order)
     <div class="order">
       <table border="1">
@@ -63,9 +65,11 @@
         @endfor
       </table>
     </div>
-    <div class="center">
-      <a class="btn btn-outline-secondary btn-sm" href="{{ action('OrderController@edit', ['id' => $order->id]) }}">編集</a>
-      <a class="btn btn-outline-danger btn-sm" href="{{ action('OrderController@delete', ['id' => $order->id]) }}">削除</a>
-    </div>
+    @if ($user_id == $order->user_id)
+      <div class="center">
+        <a class="btn btn-outline-secondary btn-sm" href="{{ action('OrderController@edit', ['id' => $order->id]) }}">編集</a>
+        <a class="btn btn-outline-danger btn-sm" href="{{ action('OrderController@delete', ['id' => $order->id]) }}">削除</a>
+      </div>
+    @endif
   @endforeach
 @endsection

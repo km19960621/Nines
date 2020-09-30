@@ -9,6 +9,7 @@ class Nine extends Model
     protected $guarded = array('id');
     //
     public static $rules = array(
+      'user_id' => 'required',
       'title' => 'required',
       'pitcher' => 'required',
       'catcher' => 'required',

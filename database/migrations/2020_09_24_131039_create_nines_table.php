@@ -15,6 +15,7 @@ class CreateNinesTable extends Migration
     {
         Schema::create('nines', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
             $table->string('title');
             $table->string('pitcher');
             $table->string('catcher');

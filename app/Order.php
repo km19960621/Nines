@@ -10,6 +10,7 @@ class Order extends Model
     //
       public static $rules = array(
       'title' => 'required',
+      'user_id' => 'required',
       'nine_id' => 'required',
       'first_batter' => 'required',
       'second_batter' => 'required',
