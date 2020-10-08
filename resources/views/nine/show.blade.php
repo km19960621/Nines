@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'ナイン')
+@section('title', 'ナインの詳細')
 
 @section('content')
   <div class="nine-wrapper">

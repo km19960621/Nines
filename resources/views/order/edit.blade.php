@@ -5,7 +5,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 mx-auto">
-        <h2>order/edit</h2>
         <form action="{{ action('OrderController@update') }}" method="post" enctype="multipart/form-data">
           @if (count($errors) > 0)
             <ul>

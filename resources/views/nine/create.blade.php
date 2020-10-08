@@ -5,7 +5,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 mx-auto">
-        <h2>nine/create</h2>
         <form action="{{ action('NineController@create') }}" method="post" enctype="multipart/form-data">
           @if (count($errors) > 0)
             <ul>
