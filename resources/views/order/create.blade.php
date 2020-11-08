@@ -1,5 +1,5 @@
 @extends('layout')
-@section('tilte', 'オーダーの新規作成')
+@section('title', 'オーダーの新規作成')
 
 @section('content')
   <div class="container">
