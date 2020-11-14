@@ -19,7 +19,7 @@ class NineTest extends TestCase
     public function test_nine_controller()
     {
       $response = $this->get('/');
-      $response->assertStatus(302);
+      $response->assertStatus(200);
 
       /*
       Auth::loginUsingId(1);

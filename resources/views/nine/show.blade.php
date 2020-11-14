@@ -26,10 +26,11 @@
     <div class="center">
       <a class="btn btn-primary" href="{{ action('OrderController@add', ['id' => $nine->id]) }}">オーダー作成</a>
       <a class="btn btn-secondary" href="{{ action('NineController@edit', ['id' => $nine->id]) }}">編集</a>
-      @if($orders)
-        <a class="btn btn-danger disabled" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
-      @else
+      {{-- ナインに紐づくオーダーが存在する場合はナインを削除できないようにする --}}
+      @if(count($orders) === 0)
         <a class="btn btn-danger" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
+      @else
+        <a class="btn btn-danger disabled" href="{{ action('NineController@delete', ['id' => $nine->id]) }}">削除</a>
       @endif
     </div>
   @endif
