@@ -38,6 +38,7 @@ class OrderController extends Controller
       if (empty($order)) {
         abort(404);
       }
+      $this->authorize('edit', $order);
       return view('order.edit', ['user_id' => $user_id, 'nine' => $nine, 'order_form' => $order]);
     }
 
@@ -53,6 +54,7 @@ class OrderController extends Controller
     public function delete(Request $request)
     {
       $order = Order::find($request->id);
+      $this->authorize('delete', $order);
       $order->delete();
       return redirect('/');
     }

@@ -54,6 +54,7 @@ class NineController extends Controller
       if (empty($nine)) {
         abort(404);
       }
+      $this->authorize('edit', $nine);
       return view('nine.edit', ['user_id' => $user_id, 'nine_form' => $nine]);
     }
 
@@ -69,6 +70,7 @@ class NineController extends Controller
     public function delete(Request $request)
     {
       $nine = Nine::find($request->id);
+      $this->authorize('delete', $nine);
       $nine->delete();
       return redirect('/');
     }
