@@ -33,6 +33,9 @@
                     <span class="caret"></span>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ url('user/show') }}">
+                      マイページ
+                    </a>
                     <a class="dropdown-item" href="{{ url('nine/create') }}">
                       新規ナイン作成
                     </a>

@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $guarded = array('id');
     //
-      public static $rules = array(
+    public static $rules = array(
       'title' => 'required',
       'user_id' => 'required',
       'nine_id' => 'required',

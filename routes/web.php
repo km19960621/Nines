@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('order/edit', 'OrderController@edit');
   Route::post('order/edit', 'OrderController@update');
   Route::get('order/delete', 'OrderController@delete');
+  Route::get('user/show', 'UserController@show');
+  Route::get('user/edit', 'UserController@edit');
+  Route::post('user/edit', 'UserController@update');
 });
 
 Auth::routes();
